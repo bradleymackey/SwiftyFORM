@@ -543,7 +543,7 @@ class PopulateTableView: FormItemVisitor {
         weak var weakObject = object
         model.valueDidChange = { (value: Bool) in
             SwiftyFormLog("value did change \(value)")
-            weakObject?.switchDidChange(value)
+            weakObject?.valueDidChange(value)
             return
         }
 
