@@ -533,6 +533,35 @@ class PopulateTableView: FormItemVisitor {
 			return
 		}
 	}
+    
+    // MARK: CheckmarkFormItem
+
+    func visit(object: CheckmarkFormItem) {
+        var model = CheckmarkCellModel()
+        model.title = object.title
+
+        weak var weakObject = object
+        model.valueDidChange = { (value: Bool) in
+            SwiftyFormLog("value did change \(value)")
+            weakObject?.switchDidChange(value)
+            return
+        }
+
+        let cell = CheckmarkCell(model: model)
+        cells.append(cell)
+        lastItemType = .item
+
+        SwiftyFormLog("will assign value \(object.value)")
+        cell.setValueWithoutSync(object.value, animated: false)
+        SwiftyFormLog("did assign value \(object.value)")
+
+        weak var weakCell = cell
+        object.syncCellWithValue = { (value: Bool, animated: Bool) in
+            SwiftyFormLog("sync value \(value)")
+            weakCell?.setValueWithoutSync(value, animated: animated)
+            return
+        }
+    }
 
 	// MARK: TextFieldFormItem
 

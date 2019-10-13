@@ -150,6 +150,15 @@ public class DumpVisitor: FormItemVisitor {
 		dict["title"] = object.title
 		dict["value"] = object.value
 	}
+    
+    public func visit(object: CheckmarkFormItem) {
+        dict["class"] = "CheckmarkFormItem"
+        dict["elementIdentifier"] = object.elementIdentifier
+        dict["styleIdentifier"] = object.styleIdentifier
+        dict["styleClass"] = object.styleClass
+        dict["title"] = object.title
+        dict["value"] = object.value
+    }
 
 	public func visit(object: StepperFormItem) {
 		dict["class"] = "StepperFormItem"

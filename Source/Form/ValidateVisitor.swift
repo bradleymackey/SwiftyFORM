@@ -27,6 +27,7 @@ class ValidateVisitor: FormItemVisitor {
 	func visit(object: StaticTextFormItem) {}
 	func visit(object: StepperFormItem) {}
 	func visit(object: SwitchFormItem) {}
+    func visit(object: CheckmarkFormItem) {}
 	func visit(object: TextViewFormItem) {}
 	func visit(object: ViewControllerFormItem) {}
 }
